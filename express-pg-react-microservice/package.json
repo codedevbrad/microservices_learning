@@ -1,0 +1,10 @@
+{
+  "name": "express-pg-react-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "micro":        "docker-compose up --build" ,
+    "micro:server": "docker-compose up nsp_backend nsp_db --build" ,
+    "micro:pull":   "docker-compose down"
+  }
+}

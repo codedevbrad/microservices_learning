@@ -1,0 +1,26 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+
+  express-redis:
+    build: ./service_redis
+    volumes:
+      - ./service_redis:/usr/src/app
+    ports:
+      - "5000:5000"
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
+      - PORT=5000
+
+  py:
+    build: ./service_py
+    volumes:
+      - ./service_py:/usr/src/app
+    ports:
+      - "5001:5001"
